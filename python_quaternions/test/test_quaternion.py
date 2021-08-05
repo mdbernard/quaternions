@@ -125,6 +125,7 @@ def test_unit_quaternion_within_tolerance_input():
     assert q.y == 0.0
     assert q.z == 0.0
 
+
 def test_unit_quaternion_out_of_tolerance_input():
     # arrange
     w = 1.1
