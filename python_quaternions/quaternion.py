@@ -4,7 +4,7 @@ import numpy as np
 class Quaternion:
     """A base quaternion class with universal quaternion properties."""
 
-    def __init__(self, w: float, x: float, y: float, z: float) -> None:
+    def __init__(self, w, x, y, z):
         """
         Instantiate a quaternion from its component parts.
 
@@ -57,7 +57,7 @@ class Quaternion:
 class UnitQuaternion(Quaternion):
     """A quaternion class that enforces unit magnitude."""
 
-    def __init__(self, w: float, x: float, y: float, z: float, tol: float = 1e-5) -> None:
+    def __init__(self, w, x, y, z, tol=1e-5):
         """
         Create the quaternion with the closest floating point values to the
         inputted components such that the magnitude is as close to 1.0 as
@@ -73,8 +73,8 @@ class UnitQuaternion(Quaternion):
         """
         norm = np.linalg.norm([w, x, y, z])
         if norm == 0:
-            raise ValueError(('Cannot create UnitQuaternion from components with '
-                              'zero magnitude.'))
+            raise ValueError(('Cannot create UnitQuaternion from components '
+                              'with zero magnitude.'))
         if np.abs(1.0 - norm) > tol:
             raise ValueError(('The magnitude of the inputted components is '
                               'greater than the tolerance for rounding to 1.'))
